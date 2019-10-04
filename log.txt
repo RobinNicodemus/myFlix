@@ -16,3 +16,9 @@ Timestamp: Thu Oct 03 2019 21:10:50 GMT+0200 (CEST)
 URL: /
 Timestamp: Thu Oct 03 2019 21:11:42 GMT+0200 (CEST)
 
+URL: /
+Timestamp: Fri Oct 04 2019 17:11:06 GMT+0200 (CEST)
+
+URL: /favicon.ico
+Timestamp: Fri Oct 04 2019 17:11:06 GMT+0200 (CEST)
+
