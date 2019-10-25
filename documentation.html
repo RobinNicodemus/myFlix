@@ -1,0 +1,129 @@
+Title: MyFlix
+
+Endpoints:
+
+------------ GET REQUESTS ------------
+
+--I WANT TO SEE ALL YOUR MOVIES--
+Description: Get an array of all movies on the database
+URL: "/movies"
+Request Type: GET
+Request Parameters: None
+Request Body: None
+Response data format: Array with nested objects
+Example: [{
+  title: "name1",
+  director: "dir1",
+  cast: ["act1","act2","act3"],
+  genres: ["gen1","gen2"]
+},
+{
+  title: "name2",
+  director: "dir1",
+  cast: ["act1","act2","act3"],
+  genres: ["gen1","gen2"]
+},
+...
+]
+
+--I WANT TO GET DATA ABOUT ONE MOVIE--
+Description: Get data about one movie by title
+URL: "/movies/[title]"
+Request Type: GET
+Request Parameters: Title of the specific movie
+Request Body: None
+Response data format: Object
+Example: {
+  title: "name1",
+  director: "dir1",
+  cast: ["act1","act2","act3"],
+  genres: ["gen1","gen2"]
+}
+
+--I WANT TO GET DATA ABOUT ONE GENRE--
+Description: Get data about one genre by name
+URL: "/genres/:genrename"
+Request Type: GET
+Request Parameters: Name of the specific genre
+Request Body: None
+Response data format: Object
+Example: {
+  name: "Thriller",
+  description: "Thrillers are movies that focus on ...",
+  featured-movies: ["title1","title2", ..., "titleN"]
+}
+
+--I WANT TO GET DATA ABOUT A DIRECTOR--
+Description: Get data about one director by name
+URL: "/directors/:director"
+Request Type: GET
+Request Parameters: Name of the director
+Request Body: None
+Response data format: Object
+Example: {
+  name: "Stanley Kubrick",
+  birth: "26/07/1928",
+  death: "07/03/1999",
+  movies: ["title1","title2", ..., "titleX"]
+}
+
+--I WANT TO REGISTER A USERPROFILE--
+Description: Create a new user profile
+URL: "/users"
+Request Type: POST
+Request Body: Object
+Request body example: {
+  username: "john doe",
+  password: "complex",
+  email: "john@doe.com",
+  dob: "20/03/1999"
+}
+Response data format: Object
+Example: {
+  username: "john doe",
+  password: "complex",
+  email: "john@doe.com",
+  dob: "20/03/1999"
+}
+
+--I WANT TO CHANGE A USERPROFILE--
+Description: Change a user profile by name
+URL: "/users/:name"
+Request Type: PUT
+Request Parameters: Name of the user
+Request Body: Object
+Request body example: {
+  email: "doe@john.com",
+}
+Response data format: Object
+Example: {
+  email: "doe@john.com",
+}
+
+--I WANT TO ADD A MOVIE TO MY A FAVORITES--
+Description: add a movie to users list of favorite movies
+URL: "/users/:name/favlist"
+Request Type: POST
+Request Parameters: Name of the user
+Request Body: Object
+Request body example:
+Response data format: Object
+Example: //added object gets returned
+
+--I WANT TO DELETE A MOVIE FROM MY FAVORITES--
+Description: delete a movie from users list of favorite movies
+URL: "/users/:name/favlist"
+Request Type: DELETE
+Request Parameters: Name of the user
+Request Body: Object
+Request body example:
+Response data format: String
+Example: ""
+
+--I WANT TO DELETE A USERPROFILE--
+URL: "/users/:name"
+Request Type: DELETE
+Request Parameters: Name of the user
+Request Body: None
+Response data format: Object
+Example:
