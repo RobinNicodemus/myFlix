@@ -2,10 +2,155 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>myFlix Documentation</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <title>MyFlix Documentation</title>
   </head>
   <body>
-    <p>This wep application provides users with information about movies.<p>
-    <p>Users will be ablte to sign up, update their personal information, and create a list of their favorite movies.<p>
+    <h1>Documentation</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>URL</th>
+          <th>HTTP Method</th>
+          <th>Request parameters</th>
+          <th>Request body format</th>
+          <th>Request body example</th>
+          <th>Successful response format</th>
+          <th>Successful response example</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Get an array of all movies in the database</td>
+          <td>/movies</td>
+          <td>GET</td>
+          <td>None</td>
+          <td>None</td>
+          <td>None</td>
+          <td>Array with nested Objects</td>
+          <td>[{
+            title: "movie1",
+            director: "dir1",
+            ...
+          },
+          {
+            title: "movie2",
+            director: "dir2",
+            ...
+          },
+          ...
+          ]</td>
+        </tr>
+        <tr>
+          <td>Get data about one specific movie by title</td>
+          <td>/movies/[title]</td>
+          <td>GET</td>
+          <td>Title of the movie</td>
+          <td>None</td>
+          <td>None</td>
+          <td>Object</td>
+          <td>{
+            title: "movie1",
+            director: "dir1",
+            cast: ["act1","act2","act3"],
+            genres: "gen1"
+          }</td>
+        </tr>
+        <tr>
+          <td>Get data about one specific genre by name</td>
+          <td>/genres/[genrename]</td>
+          <td>GET</td>
+          <td>Name of the genre</td>
+          <td>None</td>
+          <td>None</td>
+          <td>Object</td>
+          <td>{
+            name: "Thriller",
+            description: "Thrillers are movies that focus on ...",
+            featured-movies: ["title1","title2", ..., "titleN"]
+          }</td>
+        </tr>
+        <tr>
+          <td>Get data about one director by name</td>
+          <td>/directors/[director]</td>
+          <td>GET</td>
+          <td>Name of the director</td>
+          <td>None</td>
+          <td>None</td>
+          <td>Object</td>
+          <td>{
+            name: "Stanley Kubrick",
+            birth: "26/07/1928",
+            death: "07/03/1999",
+            movies: ["title1","title2", ..., "titleX"]
+          }</td>
+        </tr>
+        <tr>
+          <td>Create a new user profile</td>
+          <td>/users</td>
+          <td>POST</td>
+          <td>None</td>
+          <td>Object</td>
+          <td>{
+            username: "newUser",
+            password: "complex",
+            email: "newUser@example.com",
+            dob: "20/03/1999"
+          }</td>
+          <td>Object</td>
+          <td>{
+            id: "exampleID",
+            username: "newUser",
+            password: "complex",
+            email: "newUser@example.com",
+            dob: "20/03/1999"
+          }</td>
+        </tr>
+        <tr>
+          <td>Change existing user profile by ID</td>
+          <td>/users/[userID]</td>
+          <td>PATCH</td>
+          <td>ID of the User</td>
+          <td>Object containig the data to be changed</td>
+          <td>{
+            email: "newEmail@example.com"
+          }</td>
+          <td>Object containing the changed data</td>
+          <td>{
+            email: "newEmail@example.com"
+          }</td>
+        </tr>
+        <td>Delete existing user profile by ID</td>
+        <td>/users/[userID]</td>
+        <td>DELETE</td>
+        <td>ID of the User</td>
+        <td>None</td>
+        <td>None</td>
+        <td>text</td>
+        <td>[name]s profile has been deleted</td>
+      </tr>
+        <tr>
+          <td>Add a movie to a users list of favorite movies</td>
+          <td>/users/[name]/favlist/[title]</td>
+          <td>POST</td>
+          <td>ID of the User / Title of the movie to be added</td>
+          <td>None</td>
+          <td>None</td>
+          <td>text</td>
+          <td>"[title] added to [name]s favlist"</td>
+        </tr>
+        <tr>
+          <td>Delete a movie from a users list of favorite movies</td>
+          <td>/users/[name]/favlist/[title]</td>
+          <td>DELETE</td>
+          <td>ID of the User / Title of the movie to be added</td>
+          <td>None</td>
+          <td>None</td>
+          <td>text</td>
+          <td>"[title] deleted from [name]s favlist"</td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>

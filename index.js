@@ -42,7 +42,7 @@ app.get('/directors/:director', (req,res) => res.send('Successful GET returning 
 app.post('/users', (req,res) => res.send('Successful POST returns the data about the new user'));
 
 //Allow users to update their profile data (pw, username, email, etc)
-app.put('/users/:name', (req,res) => res.send('Successful PUT returns changed user data'));
+app.patch('/users/:name', (req,res) => res.send('Successful PATCH returns changed user data'));
 
 //Allow users to add a movie to their list of favorite movies
 app.post('/users/:name/favlist', (req,res) => res.send('POST returns the added movie'));
