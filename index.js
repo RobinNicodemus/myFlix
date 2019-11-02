@@ -45,10 +45,10 @@ app.post('/users', (req,res) => res.send('Successful POST returns the data about
 app.patch('/users/:name', (req,res) => res.send('Successful PATCH returns changed user data'));
 
 //Allow users to add a movie to their list of favorite movies
-app.post('/users/:name/favlist', (req,res) => res.send('POST returns the added movie'));
+app.post('/users/:name/favlist/:title', (req,res) => res.send('POST returns a sucess message'));
 
 //Allow users to delete a movie from their list of favorite movies
-app.delete('/users/:name/favlist', (req,res) => res.send('Returns a success message'));
+app.delete('/users/:name/favlist/:title', (req,res) => res.send('DELETE returns a success message'));
 
 //Allow users to deregister
 app.delete('/users/:name', (req,res) => res.send('Account deletion succesful'));
