@@ -30,125 +30,159 @@
           <td>None</td>
           <td>Array with nested Objects</td>
           <td>[{
-            title: "movie1",
-            director: "dir1",
-            ...
+            Actors: ["Act1","Act2"],
+            _id: "MovieID1"
+            Title: "Movie1",
+            Description: "lorem ipsum",
+            Genre: "ObjectID",
+            Director: "ObjectID",
+            ImagePath: "movie1.png",
+            Featured: Boolean
           },
           {
-            title: "movie2",
-            director: "dir2",
+            Actors: [...],
+            _id: "MovieID2",
+            Title: "Movie2",
+            Description: "lorem ipsum",
             ...
           },
           ...
           ]</td>
         </tr>
         <tr>
-          <td>Get data about one specific movie by title</td>
-          <td>/movies/[title]</td>
+          <td>Get data about one specific movie by ID</td>
+          <td>/movies/[MovieID]</td>
           <td>GET</td>
-          <td>Title of the movie</td>
+          <td>ID</td>
           <td>None</td>
           <td>None</td>
           <td>Object</td>
           <td>{
-            title: "movie1",
-            director: "dir1",
-            cast: ["act1","act2","act3"],
-            genres: "gen1"
+            Actors: ["Act1","Act2"],
+            _id: "MovieID1"
+            Title: "Movie1",
+            Description: "lorem ipsum",
+            Genre: "ObjectID",
+            Director: "ObjectID",
+            ImagePath: "movie1.png",
+            Featured: Boolean
           }</td>
         </tr>
         <tr>
           <td>Get data about one specific genre by name</td>
-          <td>/genres/[genrename]</td>
+          <td>/genres/[Genrename]</td>
           <td>GET</td>
           <td>Name of the genre</td>
           <td>None</td>
           <td>None</td>
           <td>Object</td>
           <td>{
-            name: "Thriller",
-            description: "Thrillers are movies that focus on ...",
-            featured-movies: ["title1","title2", ..., "titleN"]
+            Name: "Thriller",
+            Description: "Thrillers are movies that focus on ..."
           }</td>
         </tr>
         <tr>
-          <td>Get data about one director by name</td>
-          <td>/directors/[director]</td>
+          <td>Get data about one director by DirectorID</td>
+          <td>/directors/[DirectorID]</td>
           <td>GET</td>
-          <td>Name of the director</td>
+          <td>DirectorID</td>
           <td>None</td>
           <td>None</td>
           <td>Object</td>
           <td>{
-            name: "Stanley Kubrick",
-            birth: "26/07/1928",
-            death: "07/03/1999",
-            movies: ["title1","title2", ..., "titleX"]
-          }</td>
+            "Movies": ["ObjectID", "ObjectID"],
+            "_id": "5dcef9b16ac458b6033b2316",
+            "Name": "Jonathan Demme",
+            "Bio": "Robert Jonathan Demme was an American director, producer and screenwriter.",
+            "Birth": "1944-02-22T00:00:00.000Z",
+            "Death": "2017-04-26T00:00:00.000Z"
+        }</td>
         </tr>
         <tr>
           <td>Create a new user profile</td>
           <td>/users</td>
           <td>POST</td>
           <td>None</td>
-          <td>Object</td>
           <td>{
-            username: "newUser",
-            password: "complex",
-            email: "newUser@example.com",
-            dob: "20/03/1999"
+            Username: String, (required)
+            Password: String, (required)
+            Email: String, (required)
+            Birthday: Date
           }</td>
-          <td>Object</td>
           <td>{
-            id: "exampleID",
-            username: "newUser",
-            password: "complex",
-            email: "newUser@example.com",
-            dob: "20/03/1999"
+            Username: "newUser",
+            Password: "complex",
+            Email: "newUser@example.com"
+          }</td>
+          <td>Object including UserID</td>
+          <td>{
+            _id: "exampleID",
+            Username: "newUser",
+            Password: "complex",
+            Email: "newUser@example.com",
           }</td>
         </tr>
         <tr>
-          <td>Change existing user profile by ID</td>
-          <td>/users/[userID]</td>
+          <td>Change existing user profile by Username</td>
+          <td>/users/[Username]</td>
           <td>PATCH</td>
-          <td>ID of the User</td>
-          <td>Object containig the data to be changed</td>
+          <td>Username</td>
           <td>{
-            email: "newEmail@example.com"
+            Username: String, (required)
+            Password: String, (required)
+            Email: String, (required)
+            Birthday: Date
+          }</td>
+          <td>{
+            Username: "User",
+            Password: "complex",
+            Email: "changed@changed.com"
           }</td>
           <td>Object containing the changed data</td>
           <td>{
-            email: "newEmail@example.com"
+            Username: "User",
+            Password: "complex",
+            Email: "changed@changed.com"
           }</td>
         </tr>
-        <td>Delete existing user profile by ID</td>
-        <td>/users/[userID]</td>
+        <td>Delete existing user profile by Username</td>
+        <td>/users/[Username]</td>
         <td>DELETE</td>
-        <td>ID of the User</td>
+        <td>Username</td>
         <td>None</td>
         <td>None</td>
-        <td>text</td>
-        <td>[name]s profile has been deleted</td>
+        <td>Text</td>
+        <td>Text: "[name] was deleted"</td>
       </tr>
         <tr>
           <td>Add a movie to a users list of favorite movies</td>
-          <td>/users/[name]/favlist/[title]</td>
+          <td>/users/[Username]/favlist/[MovieID]</td>
           <td>POST</td>
-          <td>ID of the User / Title of the movie to be added</td>
+          <td>Username / MovieID</td>
           <td>None</td>
           <td>None</td>
-          <td>text</td>
-          <td>"[title] added to [name]s favlist"</td>
+          <td>JSON (changed user)</td>
+          <td>{
+            FavList: [MovieID , MovieID2]
+            Username: "User",
+            Password: "complex",
+            Email: "changed@changed.com"
+          }</td>
         </tr>
         <tr>
           <td>Delete a movie from a users list of favorite movies</td>
-          <td>/users/[name]/favlist/[title]</td>
+          <td>/users/[Username]/favlist/[MovieID]</td>
           <td>DELETE</td>
-          <td>ID of the User / Title of the movie to be added</td>
+          <td>Username / MovieID</td>
           <td>None</td>
           <td>None</td>
-          <td>text</td>
-          <td>"[title] deleted from [name]s favlist"</td>
+          <td>JSON (changed user)</td>
+          <td>{
+            FavList: [MovieID2]
+            Username: "User",
+            Password: "complex",
+            Email: "changed@changed.com"
+          }</td>
         </tr>
       </tbody>
     </table>
