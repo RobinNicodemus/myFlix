@@ -27,13 +27,14 @@ var auth = require('./auth')(app);
 
 //router.use(bodyParser.json())
 
-mongoose.connect('mongodb://localhost:27017/myFlixDB',{
-  useNewUrlParser: true,
-  useUnifiedTopology: true})
-    .then(() => console.log('DB Connected!'))
-    .catch(err => {
-      console.log(Error, err.message);
-});
+// mongoose.connect('mongodb://localhost:27017/myFlixDB',{
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true})
+//     .then(() => console.log('DB Connected!'))
+//     .catch(err => {
+//       console.log(Error, err.message);
+// });
+mongoose.connect('mongodb+srv://myFlixDBadmin:adminmyFlixDB@cluster0-4fg1r.mongodb.net/myFlixDB?retryWrites=true&w=majority', {useNewUrlParser: true});
 
 app.get('/', (req, res) => res.send('Welcome to MyFlix!'));
 
