@@ -3,6 +3,8 @@ const express = require('express'),
   bodyParser = require('body-parser');
 
 //const router = express.Router();
+const { check, validationResult } = require('express-validator');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require('passport');
 require('./passport');
@@ -19,6 +21,7 @@ app.use(morgan('common'));
 app.use(express.static('public'));
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors());
 
 var auth = require('./auth')(app);
 
@@ -119,29 +122,39 @@ Email: String,
 Birthday: Date
 }
 */
-app.post('/users', function(req, res) {
-  Users.findOne({ Username: req.body.Username })
-  .then(function(user) {
-    if (user) {
-      return res.status(400).send(req.body.Username + " already exists");
-    } else {
-      Users
-      .create({
-        Username: req.body.Username,
-        Password: req.body.Password,
-        Email: req.body.Email,
-        Birthday: req.body.Birthday
-      })
-      .then(function(user) {res.status(201).json(user) })
-      .catch(function(error) {
-        console.error(error);
-        res.status(500).send("Error: " + error);
-      })
+app.post('/users', [check ('Username', 'Username required').isLength({min: 5}),
+  check ('Username', 'Username may only be Alphanumeric').isAlphanumeric(),
+  check ('Password', 'Password has minimum length of 6').isLength({min: 6}),
+  check('Email', 'Email seems not valid').isEmail()],
+  function(req, res) {
+    var errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
     }
-  }).catch(function(error) {
-    console.error(error);
-    res.status(500).send("Error: " + error);
-  });
+
+    var hashedPassword = Users.hashPassword(req.body.Password);
+    Users.findOne({ Username: req.body.Username })
+    .then(function(user) {
+      if (user) {
+        return res.status(400).send(req.body.Username + " already exists");
+      } else {
+        Users
+        .create({
+          Username: req.body.Username,
+          Password: hashedPassword,
+          Email: req.body.Email,
+          Birthday: req.body.Birthday
+        })
+        .then(function(user) {res.status(201).json(user) })
+        .catch(function(error) {
+          console.error(error);
+          res.status(500).send("Error: " + error);
+        })
+      }
+    }).catch(function(error) {
+      console.error(error);
+      res.status(500).send("Error: " + error);
+    });
 });
 
 //Allow users to update their profile data (pw, username, email, etc)
@@ -226,6 +239,7 @@ app.use( function (err,req,res,next) {
   res.status(500).send('Something went wrong!');
 });
 
-app.listen(8080, () =>
-  console.log('It´s listening on port 8080.')
+var port = process.env.Port || 3000;
+app.listen(port, "0.0.0.0." () =>
+  console.log('It´s listening on port 3000')
 );
