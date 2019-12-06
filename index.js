@@ -239,7 +239,7 @@ app.use( function (err,req,res,next) {
   res.status(500).send('Something went wrong!');
 });
 
-var port = process.env.Port || 3000;
+var port = process.env.PORT || 3000;
 app.listen(port, "0.0.0.0", () =>
   console.log('It´s listening on port 3000')
 );
