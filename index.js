@@ -127,12 +127,13 @@ app.post('/users', [check ('Username', 'Username required').isLength({min: 5}),
   check ('Username', 'Username may only be Alphanumeric').isAlphanumeric(),
   check ('Password', 'Password has minimum length of 6').isLength({min: 6}),
   check('Email', 'Email seems not valid').isEmail()],
+  //validation
   function(req, res) {
     var errors = validationResult(req);
     if(!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
     }
-
+    //creating user
     var hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOne({ Username: req.body.Username })
     .then(function(user) {
@@ -167,23 +168,34 @@ app.post('/users', [check ('Username', 'Username required').isLength({min: 5}),
   Birthday: Date
 }
 */
-app.patch('/users/:Username', passport.authenticate('jwt', { session: false }), function (req, res) {
-  Users.findOneAndUpdate({ Username: req.params.Username }, { $set :
-  {
-    Username: req.body.Username,
-    Password: req.body.Password,
-    Email: req.body.Email,
-    Birthday: req.body.Birthday
-  }},
-  {new: true},
-  function(err, updatedUser) {
-    if(err) {
-      console.error(err);
-      res.status(500).send("Error: "+ err);
-    } else {
-      res.json(updatedUser)
-    }
-  })
+app.patch('/users/:Username', [check ('Username', 'Username required').isLength({min: 5}),
+  check ('Username', 'Username may only be Alphanumeric').isAlphanumeric(),
+  check ('Password', 'Password has minimum length of 6').isLength({min: 6}),
+  check('Email', 'Email seems not valid').isEmail()],
+  passport.authenticate('jwt', { session: false }), function (req, res) {
+    //validation
+    function(req, res) {
+      var errors = validationResult(req);
+      if(!errors.isEmpty()) {
+        return res.status(422).json({ errors: errors.array() });
+      },
+    //updating
+    Users.findOneAndUpdate({ Username: req.params.Username }, { $set :
+    {
+      Username: req.body.Username,
+      Password: req.body.Password,
+      Email: req.body.Email,
+      Birthday: req.body.Birthday
+    }},
+    {new: true},
+    function(err, updatedUser) {
+      if(err) {
+        console.error(err);
+        res.status(500).send("Error: "+ err);
+      } else {
+        res.json(updatedUser)
+      }
+    })
 });
 
 //Allow users to add a movie to their list of favorite movies
