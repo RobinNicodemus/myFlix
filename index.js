@@ -127,8 +127,8 @@ app.post('/users', [check ('Username', 'Username required').isLength({min: 5}),
   check ('Username', 'Username may only be Alphanumeric').isAlphanumeric(),
   check ('Password', 'Password has minimum length of 6').isLength({min: 6}),
   check('Email', 'Email seems not valid').isEmail()],
-  //validation
   function(req, res) {
+    //validation
     var errors = validationResult(req);
     if(!errors.isEmpty()) {
       return res.status(422).json({ errors: errors.array() });
@@ -174,11 +174,10 @@ app.patch('/users/:Username', [check ('Username', 'Username required').isLength(
   check('Email', 'Email seems not valid').isEmail()],
   passport.authenticate('jwt', { session: false }), function (req, res) {
     //validation
-    function(req, res) {
-      var errors = validationResult(req);
-      if(!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
-      },
+    var errors = validationResult(req);
+    if(!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
     //updating
     Users.findOneAndUpdate({ Username: req.params.Username }, { $set :
     {
