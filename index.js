@@ -39,7 +39,7 @@ mongoose.connect('mongodb+srv://myFlixDBadmin:adminmyFlixDB@cluster0-4fg1r.mongo
 app.get('/', (req, res) => res.send('Welcome to MyFlix!'));
 
 //GET a list of all movies
-app.get('/movies', passport.authenticate('jwt', { session: false }), function (req, res) {
+app.get('/movies', function (req, res) {
   Movies.find()
     .then(function (movies) {
       res.status(201).json(movies)
@@ -51,7 +51,7 @@ app.get('/movies', passport.authenticate('jwt', { session: false }), function (r
 });
 
 //GET data about a single title
-app.get('/movies/:MovieID', function (req, res) {
+app.get('/movies/:MovieID', passport.authenticate('jwt', { session: false }), function (req, res) {
   Movies.findOne({ _id: req.params.MovieID })
     .populate('Genre')
     .populate('Director')
