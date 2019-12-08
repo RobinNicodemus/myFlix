@@ -179,10 +179,11 @@ app.patch('/users/:Username', [check ('Username', 'Username required').isLength(
       return res.status(422).json({ errors: errors.array() });
     }
     //updating
+    var hashedPassword = Users.hashPassword(req.body.Password);
     Users.findOneAndUpdate({ Username: req.params.Username }, { $set :
     {
-      Username: req.body.Username,
-      Password: req.body.Password,
+      // Username may not be changed. Otherwise it might overwirte another user
+      Password: hashedPassword,
       Email: req.body.Email,
       Birthday: req.body.Birthday
     }},
