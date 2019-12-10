@@ -33573,7 +33573,7 @@ function (_React$Component) {
         className: "movie-descitption"
       }, _react.default.createElement("span", {
         className: "label"
-      }, "Title: "), _react.default.createElement("span", {
+      }, "Description: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Description)), _react.default.createElement("div", {
         className: "movie-genre"
