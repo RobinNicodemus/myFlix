@@ -2,7 +2,6 @@ const express = require('express'),
   morgan = require('morgan'),
   bodyParser = require('body-parser');
 
-//const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -24,8 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
 
 var auth = require('./auth')(app);
-
-//router.use(bodyParser.json())
 
 // mongoose.connect('mongodb://localhost:27017/myFlixDB', {
 //   useNewUrlParser: true,
