@@ -1,0 +1,49 @@
+.movie-card {
+    width: 16rem;
+    margin: 1.5rem;
+    overflow: hidden;
+    border-radius: 10px;
+    background-color: rgb(248, 252, 255);
+    box-shadow: 3px 3px 14px 3px rgba(0,0,0,0.38);
+    transition: all .2s ease-in-out;
+}
+
+.movie-card:hover,
+.movie-card:focus {
+    transform: scale(1.05);
+    box-shadow: 3px 3px 19px 6px rgba(0,0,0,0.38);
+}
+
+.card-img-top {
+    max-height: 16rem;
+    object-fit: cover;
+    object-position: 0 0;
+}
+
+.card-body {
+    border-top: 2px solid rgba(0,0,0,0.5);
+    padding: 0.5rem 1rem;
+}
+
+.card-title {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    max-lines: 1;
+    
+}
+
+.card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
+    margin-bottom: 0.5rem;
+}
+
+.card-body > .btn,
+.card > .btn {
+    width: 14rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+    align-self: flex-end;
+}

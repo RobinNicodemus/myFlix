@@ -1,5 +1,7 @@
 import React from 'react';
-import { MainView } from '../main-view/main-view';
+import PropTypes from 'prop-types';
+
+import './movie-view.scss'
 
 export class MovieView extends React.Component {
   constructor() {
@@ -32,8 +34,24 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span classname="value">{movie.Director.Name}</span>
         </div>
-        <button className="close-button" onClick={() => this.props.resetState()}>View all</button>
+        <button className="btn btn-primary" onClick={() => this.props.resetMovie()}>View all</button>
       </div>
     );
   }
 }
+
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Featured: PropTypes.bool.isRequired,
+    Director: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }).isRequired,
+    Genre: PropTypes.shape({
+      Name: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired,
+  resetMovie: PropTypes.func.isRequired
+};
