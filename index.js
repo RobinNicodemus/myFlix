@@ -38,7 +38,7 @@ mongoose.connect('mongodb+srv://myFlixDBadmin:adminmyFlixDB@cluster0-4fg1r.mongo
 app.get('/', (req, res) => res.send('Welcome to MyFlix!'));
 
 //GET a list of all movies
-app.get('/movies', function (req, res) {
+app.get('/movies', passport.authenticate('jwt', { session: false }), function (req, res) {
   Movies.find()
     .populate('Genre')
     .populate('Director')

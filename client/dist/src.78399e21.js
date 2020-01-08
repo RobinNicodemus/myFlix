@@ -36192,7 +36192,8 @@ MovieView.propTypes = {
     Genre: _propTypes.default.shape({
       Name: _propTypes.default.string.isRequired
     }).isRequired
-  }).isRequired
+  }).isRequired,
+  resetMovie: _propTypes.default.func.isRequired
 };
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","./movie-view.scss":"components/movie-view/movie-view.scss"}],"../node_modules/invariant/browser.js":[function(require,module,exports) {
 /**
@@ -38279,6 +38280,8 @@ var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
 
 var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 require("./login-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -38308,9 +38311,19 @@ function LoginView(props) {
 
   var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
-    console.log(username, password); //send req to server for authentication then call props.onLoggedIn(username)
 
-    props.onLoggedIn(username);
+    _axios.default.post('https://radiant-flix.herokuapp.com/login', {
+      // axios.post('http://localhost:3000/login', {
+      Username: username,
+      Password: password
+    }).then(function (response) {
+      var data = response.data;
+      props.onLoggedIn(data);
+    }).catch(function (e) {
+      console.log('user not known');
+    }); //send req to server for authentication then call props.onLoggedIn(username)
+    //props.onLoggedIn(username);
+
   };
 
   return (//<Form className="login-card">
@@ -38344,7 +38357,7 @@ function LoginView(props) {
 LoginView.propTypes = {
   onLoggedIn: _propTypes.default.func.isRequired
 };
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/prop-types-extra/lib/isRequiredForA11y.js":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/prop-types-extra/lib/isRequiredForA11y.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -42351,8 +42364,8 @@ function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      //axios.get('https://radiant-flix.herokuapp.com/movies')
-      _axios.default.get('http://localhost:3000/movies').then(function (response) {
+      _axios.default.get('https://radiant-flix.herokuapp.com/movies') //axios.get('http://localhost:3000/movies')
+      .then(function (response) {
         //assign the response to the state
         console.log(response.data);
 
@@ -42364,6 +42377,24 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "getMovies",
+    value: function getMovies(token) {
+      var _this3 = this;
+
+      //axios.get('http://localhost:3000/movies'), {
+      _axios.default.get('https://radiant-flix.herokuapp.com/movies', {
+        headers: {
+          Authorization: 'Bearer ${token}'
+        }
+      }).then(function (response) {
+        _this3.setState({
+          movies: response.data
+        });
+      }).catch(function (err) {
+        console.log(err);
+      });
+    }
+  }, {
     key: "onMovieClick",
     value: function onMovieClick(movie) {
       this.setState({
@@ -42372,15 +42403,19 @@ function (_React$Component) {
     }
   }, {
     key: "onLoggedIn",
-    value: function onLoggedIn(user) {
+    value: function onLoggedIn(authData) {
+      console.log(authData);
       this.setState({
-        user: user
+        user: authData.user.Username
       });
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
+      this.getMovies(authData.token);
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var _this$state = this.state,
           movies = _this$state.movies,
@@ -42401,7 +42436,7 @@ function (_React$Component) {
         sm: 6
       }, _react.default.createElement(_registrationView.RegistrationView, {
         onLoggedIn: function onLoggedIn(user) {
-          return _this3.onLoggedIn(user);
+          return _this4.onLoggedIn(user);
         }
       }))));
       if (!movies) return _react.default.createElement("div", {
@@ -42438,7 +42473,7 @@ function (_React$Component) {
           key: movie._id,
           movie: movie,
           onClick: function onClick(movie) {
-            return _this3.onMovieClick(movie);
+            return _this4.onMovieClick(movie);
           }
         }));
       })));
