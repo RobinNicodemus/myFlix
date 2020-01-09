@@ -33,6 +33,7 @@ export function LoginView(props) {
         //<Form className="login-card">
         <Form inline className="login-form">
             <Form.Control
+                id="loginFormBasicUsername"
                 type="text"
                 placeholder="Username"
                 aria-label="Username"
@@ -40,6 +41,7 @@ export function LoginView(props) {
                 onChange={e => setUsername(e.target.value)}
             />
             <Form.Control
+                id="loginFormBasicPassword"
                 type="password"
                 placeholder="Password"
                 aria-label="Password"

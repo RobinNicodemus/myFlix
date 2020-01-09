@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import { RegistrationView } from '../registration-view/registration-view';
 import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
@@ -25,24 +27,19 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://radiant-flix.herokuapp.com/movies')
-      //axios.get('http://localhost:3000/movies')
-      .then(response => {
-        //assign the response to the state
-        console.log(response.data)
-        this.setState({
-          movies: response.data
-        });
-      })
-      .catch(function (error) {
-        console.log("Unable to get movie data: " + error);
+    let accesToken = localStorage.getItem('token');
+    if (accesToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
       });
+      this.getMovies(accesToken)
+    }
   }
 
   getMovies(token) {
     //axios.get('http://localhost:3000/movies'), {
     axios.get('https://radiant-flix.herokuapp.com/movies', {
-      headers: { Authorization: 'Bearer ${token}' }
+      headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
         this.setState({
@@ -77,6 +74,8 @@ export class MainView extends React.Component {
   }
 
   resetUser = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
     this.setState({ user: "" });
   }
 
