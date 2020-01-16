@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom';
 
 import './movie-view.scss'
 
@@ -28,13 +30,19 @@ export class MovieView extends React.Component {
         </div>
         <div className="movie-genre">
           <span className="label">Genre: </span>
-          <span className="value">{movie.Genre.Name}</span>
+          <Link to={`/genres/${movie.Genre.Name}`}>
+            <Button variant="link">{movie.Genre.Name}</Button>
+          </Link>
         </div>
         <div className="movie-director">
           <span className="label">Director: </span>
-          <span classname="value">{movie.Director.Name}</span>
+          <Link to={`/directors/${movie.Director._id}`}>
+            <Button variant="link">{movie.Director.Name}</Button>
+          </Link>
         </div>
-        <button className="btn btn-primary" onClick={() => this.props.resetMovie()}>View all</button>
+        <Link to={'/'}>
+          <Button className="mv-btn" variant="primary">View all</Button>
+        </Link>
       </div>
     );
   }
@@ -53,5 +61,4 @@ MovieView.propTypes = {
       Name: PropTypes.string.isRequired
     }).isRequired
   }).isRequired,
-  resetMovie: PropTypes.func.isRequired
 };

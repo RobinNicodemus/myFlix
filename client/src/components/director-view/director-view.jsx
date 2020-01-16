@@ -1,0 +1,65 @@
+import React from 'react';
+import { MovieCard } from '../movie-card/movie-card';
+import PropTypes from 'prop-types';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button'
+import { Link } from 'react-router-dom';
+
+import './director-view.scss';
+
+export class DirectorView extends React.Component {
+    constructor() {
+        super();
+    }
+
+
+    handleDate = (dateString) => {
+        if (dateString) {
+            let date = new Date(dateString);
+            return date.toLocaleDateString();
+        } else {
+            return null
+        }
+    }
+
+    render() {
+        const { director, directorMovies } = this.props;
+
+        return (
+            <div className="director-view">
+                <Row className="justify-content-around">
+                    <Col xs={8} md={6} className="dir-card">
+
+                        <h5 className="value">{director.Name}</h5>
+
+                        <p className="value">{director.Bio}</p>
+
+                        <div className="director-birth">
+                            <span className="label">Birth: </span>
+                            <span className="value">{this.handleDate(director.Birth)}</span>
+                        </div>
+                        <div className="director-death">
+                            <span className="label">Death: </span>
+                            <span className="value">{this.handleDate(director.Death)}</span>
+                        </div>
+                        <Link to={'/'}>
+                            <Button variant="primary">View all</Button>
+                        </Link>
+                    </Col>
+                </Row>
+                <Row className="justify-content-around">
+                    {directorMovies.map(m =>
+                        <MovieCard key={m._id} movie={m} />)}
+                </Row>
+            </div>
+
+        )
+
+    }
+}
+
+DirectorView.propTypes = {
+    director: PropTypes.object.isRequired,
+    directorMovies: PropTypes.array.isRequired
+}

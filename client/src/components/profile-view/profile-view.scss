@@ -1,0 +1,50 @@
+.profile-card {
+    padding: 1rem;
+border-radius: 0.5rem;
+background-color: aliceblue;
+margin: 1rem;
+}
+
+.profile-head {
+ max-width: 20rem;
+ padding-bottom: 1rem;
+}
+
+.profile-card {
+    box-shadow: 3px 3px 14px 3px rgba(0,0,0,0.38);
+    background-color: rgb(248, 252, 255);
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    border: 1px solid rgba(0,0,0,.125);
+    margin: 1rem auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.profile-body {
+    padding: 1rem 0;
+}
+
+.profile-data {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-card-btns {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+.profile-link {
+    margin: 0 1rem;
+}
+
+.fav-remove-container {
+  display: grid;
+}
+
+.fav-remove-btn {
+    margin: 0 auto;
+   }

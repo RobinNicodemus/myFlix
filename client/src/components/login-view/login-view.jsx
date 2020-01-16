@@ -25,12 +25,9 @@ export function LoginView(props) {
             .catch(e => {
                 console.log('user not known')
             });
-        //send req to server for authentication then call props.onLoggedIn(username)
-        //props.onLoggedIn(username);
     };
 
     return (
-        //<Form className="login-card">
         <Form inline className="login-form">
             <Form.Control
                 id="loginFormBasicUsername"

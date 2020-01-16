@@ -49,8 +49,7 @@
   margin-bottom: 0.5rem;
 }
 
-.card-body > .btn,
-.card > .btn {
+.card-links {
   width: 14rem;
   margin: 0 auto;
   margin-bottom: 1rem;
@@ -82,8 +81,70 @@
   padding: 0 1rem;
 }
 
-.movie-view > .btn {
+.movie-view > a {
   margin: 0 1rem 1rem 1rem;
+}
+
+.mv-btn {
+  width: 100%;
+}
+.profile-card {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: aliceblue;
+  margin: 1rem;
+}
+
+.profile-head {
+  max-width: 20rem;
+  padding-bottom: 1rem;
+}
+
+.profile-card {
+  box-shadow: 3px 3px 14px 3px rgba(0, 0, 0, 0.38);
+  background-color: #f8fcff;
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  margin: 1rem auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.profile-body {
+  padding: 1rem 0;
+}
+
+.profile-data {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-card-btns {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.profile-link {
+  margin: 0 1rem;
+}
+
+.delete-container {
+  display: none;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  background-color: gray;
+  top: 0;
+  left: 0;
+  opacity: 0.8;
+}
+
+.delete-container:hover {
+  display: block;
 }
 .login-form {
   justify-content: flex-end;
