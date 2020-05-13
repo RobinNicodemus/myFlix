@@ -5,10 +5,18 @@ import { LoginView } from '../login-view/login-view';
 import Tooltip from 'react-bootstrap/Tooltip';
 import Button from 'react-bootstrap/Button'
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Form from 'react-bootstrap/Form';
+import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
+import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
 import './navbar-component.scss';
+
+const mapStateToProps = state => {
+  const { visibilityFilter } = state;
+  return { visibilityFilter };
+};
 
 export class NavbarComponent extends React.Component {
 
@@ -19,7 +27,7 @@ export class NavbarComponent extends React.Component {
   }
 
   render() {
-    const { user } = this.props;
+    const { user, visibilityFilter } = this.props;
 
     if (!user) {
       return (
@@ -29,7 +37,6 @@ export class NavbarComponent extends React.Component {
           <Navbar.Collapse className="justify-content-end align-content-center">
             <LoginView className="justify-content-end" onLoggedIn={user => this.props.onLoggedIn(user)} />
           </Navbar.Collapse>
-
         </Navbar>
       );
     }
@@ -43,6 +50,9 @@ export class NavbarComponent extends React.Component {
         </OverlayTrigger>
         <Navbar.Toggle />
         <Navbar.Collapse className="justify-content-end align-content-center">
+          <Form inline>
+            <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+          </Form>
           <Navbar.Text>
             Signed in as:&nbsp;
             <Link to={`/users/${user}`}>
@@ -57,6 +67,8 @@ export class NavbarComponent extends React.Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(NavbarComponent);
 
 NavbarComponent.propTypes = {
   user: PropTypes.string.isRequired,

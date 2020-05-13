@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
+
 import './registration-view.scss';
 import axios from 'axios';
 

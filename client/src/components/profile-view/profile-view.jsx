@@ -10,6 +10,8 @@ import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { UpdateView } from '../update-view/update-view';
 import Card from 'react-bootstrap/Card';
+import MoviesList from '../movies-list/movies-list';
+
 
 import './profile-view.scss';
 
@@ -60,11 +62,6 @@ export class ProfileView extends React.Component {
     }
   }
 
-  removeFavHandler = (e, movieId) => {
-    e.preventDefault();
-    this.removeFromFavs(localStorage.getItem('token'), movieId);
-  }
-
   handleDate = (dateString) => {
     if (dateString) {
       let date = new Date(dateString);
@@ -91,29 +88,15 @@ export class ProfileView extends React.Component {
       });
   }
 
-  removeFromFavs = (token, movieId) => {
-    axios.delete(`https://radiant-flix.herokuapp.com/users/${this.props.user}/favlist/${movieId}`, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-      .then(response => {
-        this.setState({
-          favMovies: response.data.FavList,
-        })
-        alert("success");
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-  }
-
   render() {
     const { userData, favMovies, open, } = this.state;
     const { movies } = this.props;
 
+    let profileFavMovies = movies.filter(m => favMovies.includes(m._id))
 
     return (
       <div className="profile-view">
-        <Row>
+        <Row className="justify-content-around">
           <Card className="profile-card">
             <div className="profile-head">
               <div className="profile-data">
@@ -139,7 +122,7 @@ export class ProfileView extends React.Component {
                   onClick={() => this.setState({ open: !open })}
                 >Update</Button>
                 <Link className="profile-link" to={'/'}>
-                  <Button className="mv-btn" size="sm" variant="primary">Back to Movies</Button>
+                  <Button className="mv-btn" size="sm" variant="primary">All Movies</Button>
                 </Link>
                 <Button className="profile-btn"
                   size="sm"
@@ -155,20 +138,7 @@ export class ProfileView extends React.Component {
           </Card>
         </Row >
 
-        <Row className="justify-content-around">
-          {
-            movies.filter(m => favMovies.includes(m._id))
-              .map(m =>
-                <div className="fav-remove-container">
-                  <MovieCard key={m._id} movie={m} />
-
-                  <Button className="fav-remove-btn"
-                    size="sm"
-                    onClick={(e) => this.removeFavHandler(e, m._id)}
-                  >Remove from Favorites</Button>
-                </div>
-              )}
-        </Row>
+        <MoviesList movies={profileFavMovies} />
 
 
 

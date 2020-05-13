@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
+import MoviesList from '../movies-list/movies-list';
 
 import './director-view.scss';
 
@@ -29,7 +30,7 @@ export class DirectorView extends React.Component {
         return (
             <div className="director-view">
                 <Row className="justify-content-around">
-                    <Col xs={8} md={6} className="dir-card">
+                    <Col xs={10} md={8} className="dir-card">
 
                         <h5 className="value">{director.Name}</h5>
 
@@ -48,10 +49,7 @@ export class DirectorView extends React.Component {
                         </Link>
                     </Col>
                 </Row>
-                <Row className="justify-content-around">
-                    {directorMovies.map(m =>
-                        <MovieCard key={m._id} movie={m} />)}
-                </Row>
+                <MoviesList movies={directorMovies} />
             </div>
 
         )

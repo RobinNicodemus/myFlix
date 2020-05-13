@@ -3,13 +3,16 @@ import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button'
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { setProfile } from '../../actions/actions';
+import { useDispatch } from 'react-redux';
 
 import './login-view.scss';
-
 
 export function LoginView(props) {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -21,9 +24,10 @@ export function LoginView(props) {
             .then(response => {
                 const data = response.data;
                 props.onLoggedIn(data)
+                dispatch({ type: 'SET_PROFILE', value: data.user })
             })
             .catch(e => {
-                console.log('user not known')
+                console.log(e)
             });
     };
 
@@ -49,6 +53,8 @@ export function LoginView(props) {
         </Form >
     );
 }
+
+export default connect(null, { setProfile })(LoginView);
 
 LoginView.propTypes = {
     onLoggedIn: PropTypes.func.isRequired

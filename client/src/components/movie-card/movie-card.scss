@@ -10,8 +10,8 @@
 
 .movie-card:hover,
 .movie-card:focus {
-    transform: scale(1.05);
-    box-shadow: 3px 3px 19px 6px rgba(0,0,0,0.38);
+    transform: scale(1.01);
+    box-shadow: 3px 3px 15px 4px rgba(0,0,0,0.38);
 }
 
 .card-img-top {
@@ -45,4 +45,81 @@
     margin: 0 auto;
     margin-bottom: 1rem;
     align-self: flex-end;
+}
+
+.favBtn {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    opacity: 80%;
+    border-radius: 0;
+    height: 20px;
+    transform: rotate(-45deg);
+    width: 20px;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.favBtn::after,
+.favBtn::before {
+    content: "";
+    background-color: inherit;
+    border-radius: 50%;
+    height: 20px;
+    position: absolute;
+    width: 20px;
+    top: 0;
+    left: 10px;
+}
+
+.favBtn::before {
+    top: -10px;
+    left: 0;
+}
+
+.favBtn.isFav,
+.favBtn.notFav,
+.favBtn.isFav:hover,
+.favBtn.notFav:hover,
+.favBtn.isFav:focus,
+.favBtn.notFav:focus {
+    outline: 0;
+    box-shadow: 0;
+    border: none;
+}
+
+.favBtn.isFav:hover,
+.favBtn.notFav:hover {
+    transform: scale(1.05) rotate(-45deg);
+}
+
+.favBtn.isFav:active,
+.favBtn.notFav:active {
+    background-color: #DC6666;
+    animation: antiBeat .1s 2 alternate;
+	transform-origin: center;
+}
+
+.favBtn.notFav:active {
+    animation: beat .1s 2 alternate;
+}
+
+
+.favBtn.isFav {
+    background-color: #E12828;
+    transition: background-color 0.1s transform 0.1s;   
+}
+
+.favBtn.notFav {
+    background-color: grey;
+    transition: background-color 0.1s transform 0.1s;
+}
+
+@keyframes beat{
+	to { transform: scale(1.3) rotate(-45deg); }
+}
+
+@keyframes antiBeat{
+	to { transform: scale(.95) rotate(-45deg); }
 }
