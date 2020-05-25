@@ -41737,10 +41737,6 @@ function RegistrationView(props) {
     onClick: handleRegister
   }, "Register"));
 }
-
-RegistrationView.propTypes = {
-  onLoggedIn: _propTypes.default.func.isRequired
-};
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-redux":"../node_modules/react-redux/es/index.js","../../actions/actions":"actions/actions.js","./registration-view.scss":"components/registration-view/registration-view.scss","axios":"../node_modules/axios/index.js"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
@@ -48888,7 +48884,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58979" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61983" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
