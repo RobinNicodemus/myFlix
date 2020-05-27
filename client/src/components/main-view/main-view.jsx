@@ -81,7 +81,7 @@ class MainView extends React.Component {
     localStorage.removeItem('user');
     this.props.setUser({ user: "" });
     window.open('/', '_self');
-    ///IMplement redux here
+
   }
 
   render() {
@@ -96,7 +96,7 @@ class MainView extends React.Component {
         <div className="main-wrap">
           <NavbarComponent onLoggedIn={this.onLoggedIn} resetUser={this.resetUser} user={user} />
           <Route exact path="/" render={() => {
-            if (!user) return <RegistrationView />
+            if (!user) return <RegistrationView onLoggedIn={this.onLoggedIn} />
             return <MoviesList movies={movies} profile={profile} />;
           }} />
         </div>
@@ -111,7 +111,7 @@ class MainView extends React.Component {
           <Row className="main-view">
             <Col lg={{ span: 8, offset: 2 }}>
               <Route exact path="/" render={() => {
-                if (!user) return <RegistrationView />
+                if (!user) return <RegistrationView onLoggedIn={this.onLoggedIn} />
                 return <MoviesList movies={movies} profile={profile} />;
               }} />
               <Route path="/register" render={() => <RegistrationView />} />

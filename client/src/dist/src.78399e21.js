@@ -41673,9 +41673,12 @@ function RegistrationView(props) {
       birthday = _useState8[0],
       setBirthday = _useState8[1];
 
-  var handleRegister = function handleRegister(e) {
+  var handleSubmit = function handleSubmit(e) {
     e.preventDefault();
+    registerAndLogin();
+  };
 
+  var registerAndLogin = function registerAndLogin() {
     _axios.default.post('https://radiant-flix.herokuapp.com/users', {
       Username: username,
       Password: password,
@@ -41684,9 +41687,27 @@ function RegistrationView(props) {
     }).then(function (response) {
       var data = response.data;
       console.log(data);
-      window.open('/', '_self'); //'_self' for: current tab
+      loginAfterRegister(); // window.open('/', '_self'); //'_self' for: current tab
     }).catch(function (e) {
-      console.log('error registering the user');
+      console.log(e);
+      alert('user already exists');
+    });
+  };
+
+  var loginAfterRegister = function loginAfterRegister() {
+    _axios.default.post('https://radiant-flix.herokuapp.com/login', {
+      // axios.post('http://localhost:3000/login', {
+      Username: username,
+      Password: password
+    }).then(function (response) {
+      var data = response.data;
+      props.onLoggedIn(data);
+      dispatch({
+        type: 'SET_PROFILE',
+        value: data.user
+      });
+    }).catch(function (e) {
+      console.log(e);
     });
   };
 
@@ -41699,26 +41720,36 @@ function RegistrationView(props) {
     "aria-label": "Username",
     placeholder: "Only letters and numbers",
     value: username,
+    minLength: "5",
+    pattern: "[a-zA-Z0-9]+",
+    required: true,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
-  })), _react.default.createElement(_Form.default.Group, {
+  }), _react.default.createElement(_Form.default.Text, {
+    className: "text-muted"
+  }, "Only numbers and letters. At least 5 characters.")), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicPassword"
   }, _react.default.createElement(_Form.default.Label, null, "Password:"), _react.default.createElement(_Form.default.Control, {
     type: "password",
     "aria-label": "Password",
     placeholder: "at least 6 characters",
     value: password,
+    minLength: "6",
+    required: true,
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  })), _react.default.createElement(_Form.default.Group, {
+  }), _react.default.createElement(_Form.default.Text, {
+    className: "text-muted"
+  }, "Must be at least 6 characters")), _react.default.createElement(_Form.default.Group, {
     controlId: "formBasicEmail"
   }, _react.default.createElement(_Form.default.Label, null, "E-mail:"), _react.default.createElement(_Form.default.Control, {
     type: "email",
     "aria-label": "Email",
     placeholder: "email@email.com",
     value: email,
+    required: true,
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
@@ -41734,7 +41765,7 @@ function RegistrationView(props) {
   })), _react.default.createElement(_Button.default, {
     variant: "primary",
     type: "submit",
-    onClick: handleRegister
+    onClick: handleSubmit
   }, "Register"));
 }
 },{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-redux":"../node_modules/react-redux/es/index.js","../../actions/actions":"actions/actions.js","./registration-view.scss":"components/registration-view/registration-view.scss","axios":"../node_modules/axios/index.js"}],"components/movie-view/movie-view.scss":[function(require,module,exports) {
@@ -48538,7 +48569,7 @@ function (_React$Component) {
         user: ""
       });
 
-      window.open('/', '_self'); ///IMplement redux here
+      window.open('/', '_self');
     };
 
     var reset;
@@ -48579,6 +48610,8 @@ function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
+      var _this3 = this;
+
       // #2
       var movies = this.props.movies;
       var user = this.props.user;
@@ -48593,7 +48626,9 @@ function (_React$Component) {
         exact: true,
         path: "/",
         render: function render() {
-          if (!user) return _react.default.createElement(_registrationView.RegistrationView, null);
+          if (!user) return _react.default.createElement(_registrationView.RegistrationView, {
+            onLoggedIn: _this3.onLoggedIn
+          });
           return _react.default.createElement(_moviesList.default, {
             movies: movies,
             profile: profile
@@ -48884,7 +48919,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61983" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65341" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
