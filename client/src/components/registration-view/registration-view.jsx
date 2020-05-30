@@ -4,8 +4,8 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import { connect } from 'react-redux';
-import { setUser } from '../../actions/actions';
-
+import { setProfile } from '../../actions/actions';
+import { useDispatch } from 'react-redux';
 
 import './registration-view.scss';
 import axios from 'axios';
@@ -15,6 +15,8 @@ export function RegistrationView(props) {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [birthday, setBirthday] = useState('')
+
+    const dispatch = useDispatch()
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -102,3 +104,5 @@ export function RegistrationView(props) {
         </Form>
     );
 }
+
+export default connect(null, { setProfile })(RegistrationView);

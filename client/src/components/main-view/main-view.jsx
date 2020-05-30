@@ -80,7 +80,7 @@ class MainView extends React.Component {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
     this.props.setUser({ user: "" });
-    window.open('/', '_self');
+    window.open('/client', '_self');
 
   }
 
@@ -92,7 +92,7 @@ class MainView extends React.Component {
     let { profile } = this.props;
 
     if (!movies || !movies.length || !profile) return (
-      <Router>
+      <Router basename="/client">
         <div className="main-wrap">
           <NavbarComponent onLoggedIn={this.onLoggedIn} resetUser={this.resetUser} user={user} />
           <Route exact path="/" render={() => {
@@ -105,7 +105,7 @@ class MainView extends React.Component {
 
     return (
 
-      <Router>
+      <Router basename="/client">
         <div className="main-wrap">
           <NavbarComponent onLoggedIn={this.onLoggedIn} resetUser={this.resetUser} user={user} />
           <Row className="main-view">
@@ -133,6 +133,7 @@ class MainView extends React.Component {
               }} />
               <Route path="/users/:username" render={() => {
                 return <ProfileView user={user}
+                  resetUser={this.resetUser}
                   movies={movies} />
               }} />
             </Col>

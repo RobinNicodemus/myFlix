@@ -18,6 +18,10 @@ const app = express();
 
 app.use(morgan('common'));
 app.use(express.static('public'));
+app.use("/client", express.static(path.join(__dirname, "client", "dist")));
+app.get("/client/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cors());
@@ -240,7 +244,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', { session: false }),
       if (!user) {
         res.status(400).send(req.params.Username + " was not found");
       } else {
-        res.status(400).send(req.params.Username + " was deleted");
+        res.status(200).send(req.params.Username + " was deleted");
       }
     })
     .catch(function (err) {

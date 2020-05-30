@@ -11,6 +11,9 @@ import { Link } from 'react-router-dom';
 import { UpdateView } from '../update-view/update-view';
 import Card from 'react-bootstrap/Card';
 import MoviesList from '../movies-list/movies-list';
+import { connect } from 'react-redux';
+import { setProfile, setUser } from '../../actions/actions';
+
 
 
 import './profile-view.scss';
@@ -57,7 +60,7 @@ export class ProfileView extends React.Component {
 
   deleteHandler = (e) => {
     e.preventDefault();
-    if (confirm("Do you really want to deregister?")) {
+    if (confirm("Do you really want to deregister? Your profile data will be deleted.")) {
       this.deleteUser(localStorage.getItem('token'));
     }
   }
@@ -72,16 +75,28 @@ export class ProfileView extends React.Component {
   }
 
   deleteUser = (token) => {
-    axios.delete(`https://radiant-flix.herokuapp.com/users/${this.props.user}`, {
+    /*   axios({
+         method: "delete",
+         url: `https://radiant-flix.herokuapp.com/users/${localStorage.getItem('user')}`,
+         headers: { Authorization: `Bearer ${token}` },
+         responseType: 'text',
+         params: {}
+       })*/
+    //not working: why?
+
+    axios.delete(`https://radiant-flix.herokuapp.com/users/${localStorage.getItem('user')}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
+
       .then(response => {
+        alert(response);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         this.setState({
-          user: null
-        })
-        window.open('/', '_self');
+          //   user: null
+          userData: null
+        });
+        this.props.resetUser();
       })
       .catch(function (err) {
         console.log(err);
@@ -138,7 +153,7 @@ export class ProfileView extends React.Component {
           </Card>
         </Row >
 
-        <MoviesList movies={profileFavMovies} />
+        <MoviesList movies={profileFavMovies} />s
 
 
 
@@ -148,3 +163,13 @@ export class ProfileView extends React.Component {
 
   }
 }
+let mapStateToProps = state => {
+  return {
+    //movies: state.movies,
+    user: state.user,
+    profile: state.profile
+  }
+}
+
+
+export default connect(mapStateToProps, { setProfile, setUser })(ProfileView);

@@ -28,6 +28,7 @@ export function LoginView(props) {
             })
             .catch(e => {
                 console.log(e)
+                alert(e);
             });
     };
 
