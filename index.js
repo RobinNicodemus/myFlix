@@ -7,6 +7,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const passport = require('passport');
 require('./passport');
+const path = require("path");
 
 const Models = require('./models.js');
 const Movies = Models.Movie;
