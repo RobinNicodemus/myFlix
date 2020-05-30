@@ -1,10 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { MovieCard } from '../movie-card/movie-card';
-import PropTypes from 'prop-types';
-import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Collapse from 'react-bootstrap/Collapse';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
@@ -78,15 +74,10 @@ export class ProfileView extends React.Component {
     })
 
       .then(response => {
-        /* localStorage.removeItem('token');
-         localStorage.removeItem('user');
-         this.setState({
-           //   user: null
-           userData: {}
-         });
-         */
-        this.props.resetUser();
-        // window.open('/client', '_self');
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        this.props.setUser({ user: "" });
+        window.open('/client', '_self');
       })
       .catch(function (err) {
         console.log(err);
