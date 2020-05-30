@@ -40,7 +40,6 @@ export class ProfileView extends React.Component {
   }
 
   getUser(token) {
-    //axios.get('http://localhost:3000/users/:username'), {
     axios.get(`https://radiant-flix.herokuapp.com/users/${this.props.user}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
@@ -56,7 +55,6 @@ export class ProfileView extends React.Component {
       });
 
   }
-
 
   deleteHandler = (e) => {
     e.preventDefault();
@@ -75,28 +73,20 @@ export class ProfileView extends React.Component {
   }
 
   deleteUser = (token) => {
-    /*   axios({
-         method: "delete",
-         url: `https://radiant-flix.herokuapp.com/users/${localStorage.getItem('user')}`,
-         headers: { Authorization: `Bearer ${token}` },
-         responseType: 'text',
-         params: {}
-       })*/
-    //not working: why?
-
     axios.delete(`https://radiant-flix.herokuapp.com/users/${localStorage.getItem('user')}`, {
       headers: { Authorization: `Bearer ${token}` }
     })
 
       .then(response => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        this.setState({
-          //   user: null
-          userData: null
-        });
+        /* localStorage.removeItem('token');
+         localStorage.removeItem('user');
+         this.setState({
+           //   user: null
+           userData: {}
+         });
+         */
         this.props.resetUser();
-        window.open('/client', '_self');
+        // window.open('/client', '_self');
       })
       .catch(function (err) {
         console.log(err);
