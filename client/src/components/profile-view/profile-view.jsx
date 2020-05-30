@@ -89,7 +89,6 @@ export class ProfileView extends React.Component {
     })
 
       .then(response => {
-        alert(response);
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         this.setState({
@@ -97,6 +96,7 @@ export class ProfileView extends React.Component {
           userData: null
         });
         this.props.resetUser();
+        window.open('/client', '_self');
       })
       .catch(function (err) {
         console.log(err);
