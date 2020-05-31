@@ -118,7 +118,7 @@ export function MovieCard(props) {
 }
 
 
-export default connect(mapStateToProps, { setProfile })(MovieCard);
+export default connect(/*mapStateToProps*/ null, { setProfile })(MovieCard);
 
 
 MovieCard.propTypes = {
