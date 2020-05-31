@@ -45,7 +45,7 @@ export function UpdateView(props) {
 			.then(response => {
 				const newUserData = response.data;
 				console.log(newUserData);
-				window.open(`/users/${userData.Username}`, '_self'); //'_self' for: current tab
+				window.open(`/client/users/${userData.Username}`, '_self'); //'_self' for: current tab
 			})
 			.catch(function (err) {
 				console.log(err);
