@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Collapse from 'react-bootstrap/Collapse';
 import Button from 'react-bootstrap/Button';

@@ -1,5 +1,4 @@
 import React from 'react';
-import { MovieCard } from '../movie-card/movie-card';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

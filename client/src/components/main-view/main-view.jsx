@@ -10,7 +10,6 @@ import { setMovies, setUser, setProfile } from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { RegistrationView } from '../registration-view/registration-view';
-import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { GenreView } from '../genre-view/genre-view';
 import { DirectorView } from '../director-view/director-view';
