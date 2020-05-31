@@ -76,7 +76,6 @@ export class ProfileView extends React.Component {
 
       .then(response => {
         this.props.resetUser();
-        window.open('/client', '_self');
       })
       .catch(function (err) {
         console.log(err);
