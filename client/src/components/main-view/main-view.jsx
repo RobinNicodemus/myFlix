@@ -31,7 +31,6 @@ class MainView extends React.Component {
     let accessToken = localStorage.getItem('token');
     let username = localStorage.getItem('user')
     if (accessToken !== null) {
-      console.log(this.props)
       this.props.setUser(localStorage.getItem('user'));
       this.getMovies(accessToken)
       this.getUser(accessToken, username)
@@ -58,7 +57,6 @@ class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(response => {
-        console.log(response.data)
         this.props.setProfile(response.data);
       })
       .catch(function (err) {
@@ -74,15 +72,15 @@ class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token)
   }
-  /*
-    resetUser = () => {
-      localStorage.removeItem('token');
-      localStorage.removeItem('user');
-      this.props.setUser({ user: "" });
-      window.open('/client', '_self');
-  
-    }
-  */
+
+  resetUser = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.props.setUser({ user: "" });
+    window.open('/client', '_self');
+
+  }
+
 
   render() {
 
@@ -133,7 +131,7 @@ class MainView extends React.Component {
               }} />
               <Route path="/users/:username" render={() => {
                 return <ProfileView user={user}
-                  // resetUser={this.resetUser}
+                  resetUser={this.resetUser}
                   movies={movies} />
               }} />
             </Col>

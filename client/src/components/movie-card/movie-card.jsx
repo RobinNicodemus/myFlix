@@ -34,7 +34,6 @@ export function MovieCard(props) {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(response => {
-                console.log(response.data)
                 dispatch({ type: 'SET_PROFILE', value: response.data })
             })
             .catch(function (err) {
@@ -59,7 +58,6 @@ export function MovieCard(props) {
             })*/
 
             .then(response => {
-                console.log(response.data)
                 dispatch({ type: 'SET_PROFILE', value: response.data })
             })
             .catch(function (err) {

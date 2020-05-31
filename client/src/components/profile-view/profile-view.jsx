@@ -75,9 +75,7 @@ export class ProfileView extends React.Component {
     })
 
       .then(response => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        this.props.setUser({ user: "" });
+        this.props.resetUser();
         window.open('/client', '_self');
       })
       .catch(function (err) {
@@ -160,5 +158,6 @@ ProfileView.propTypes = {
   user: PropTypes.string.isRequired,
   profile: PropTypes.object.isRequired,
   setProfile: PropTypes.func.isRequired,
-  setUser: PropTypes.func.isRequired
+  setUser: PropTypes.func.isRequired,
+  resetUser: PropTypes.func.isRequired
 };
