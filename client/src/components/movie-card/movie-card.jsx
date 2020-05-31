@@ -6,19 +6,19 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
-//import { setProfile } from '../../actions/actions';
+import { setProfile } from '../../actions/actions';
 import { useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
 import './movie-card.scss'
-/*
+
 const mapStateToProps = state => {
     return {
         profile: state.profile
     }
 };
-*/
+
 export function MovieCard(props) {
     const dispatch = useDispatch()
 
@@ -118,7 +118,7 @@ export function MovieCard(props) {
 }
 
 
-export default connect(/*mapStateToProps*/ null, { setProfile })(MovieCard);
+export default connect(mapStateToProps, { setProfile })(MovieCard);
 
 
 MovieCard.propTypes = {
