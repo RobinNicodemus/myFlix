@@ -75,14 +75,15 @@ class MainView extends React.Component {
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token)
   }
-
-  resetUser = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.props.setUser({ user: "" });
-    window.open('/client', '_self');
-
-  }
+  /*
+    resetUser = () => {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      this.props.setUser({ user: "" });
+      window.open('/client', '_self');
+  
+    }
+  */
 
   render() {
 
@@ -133,7 +134,7 @@ class MainView extends React.Component {
               }} />
               <Route path="/users/:username" render={() => {
                 return <ProfileView user={user}
-                  resetUser={this.resetUser}
+                  // resetUser={this.resetUser}
                   movies={movies} />
               }} />
             </Col>

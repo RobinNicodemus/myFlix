@@ -6,23 +6,23 @@ import Card from 'react-bootstrap/Card';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
-import { setProfile } from '../../actions/actions';
+//import { setProfile } from '../../actions/actions';
 import { useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 
 import './movie-card.scss'
-
+/*
 const mapStateToProps = state => {
     return {
         profile: state.profile
     }
 };
-
+*/
 export function MovieCard(props) {
     const dispatch = useDispatch()
 
-    let { movie, isFav, profile } = props;
+    let { movie, isFav } = props;
 
     const removeFavHandler = (e, movieId) => {
         e.preventDefault();
@@ -134,4 +134,9 @@ MovieCard.propTypes = {
             Name: PropTypes.string.isRequired
         }).isRequired
     }).isRequired,
+    //
+    key: PropTypes.string.isRequired,
+    isFav: PropTypes.bool.isRequired,
+    //profile: PropTypes.object
+    // setProfile: PropTypes.func
 };

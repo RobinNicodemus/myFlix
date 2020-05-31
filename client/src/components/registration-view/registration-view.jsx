@@ -106,3 +106,9 @@ export function RegistrationView(props) {
 }
 
 export default connect(null, { setProfile })(RegistrationView);
+
+//
+RegistrationView.propTypes = {
+    onLoggedIn: PropTypes.func.isRequired,
+    setProfile: PropTypes.func.isRequired
+};

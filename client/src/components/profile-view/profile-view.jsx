@@ -146,11 +146,18 @@ export class ProfileView extends React.Component {
 }
 let mapStateToProps = state => {
   return {
-    //movies: state.movies,
     user: state.user,
-    profile: state.profile
+    profile: state.profile,
   }
 }
 
-
 export default connect(mapStateToProps, { setProfile, setUser })(ProfileView);
+
+//
+ProfileView.propTypes = {
+  movies: PropTypes.array.isRequired,
+  user: PropTypes.string.isRequired,
+  profile: PropTypes.object.isRequired,
+  setProfile: PropTypes.func.isRequired,
+  setUser: PropTypes.func.isRequired
+};

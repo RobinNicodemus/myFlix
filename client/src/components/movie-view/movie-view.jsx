@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 import './movie-view.scss'
 
 export function MovieView(props) {
 
   const { movie } = props;
-
-  //const movie = movies.find(m => m._id === movie.movieId)
 
   return (
     <div className="movie-view">

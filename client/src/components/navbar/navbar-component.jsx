@@ -73,5 +73,7 @@ export default connect(mapStateToProps)(NavbarComponent);
 NavbarComponent.propTypes = {
   user: PropTypes.string.isRequired,
   resetUser: PropTypes.func.isRequired,
-  onLoggedIn: PropTypes.func.isRequired
+  onLoggedIn: PropTypes.func.isRequired,
+  //
+  visibilityFilter: PropTypes.string.isRequired
 };
