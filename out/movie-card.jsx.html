@@ -1,4 +1,32 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: movie-card.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: movie-card.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -102,49 +130,49 @@ export function MovieCard(props) {
 
     if (isFav) {
         return (
-            <Card className="movie-card">
-                <Card.Img variant="top" src={movie.ImagePath} />
-                <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                    <Card.Text>{movie.Description}</Card.Text>
-                </Card.Body>
-                <div className="card-links">
-                    <Link to={`/movies/${movie._id}`}>
-                        <Button variant="link">Open</Button>
-                    </Link>
-                    <Link to={`/directors/${movie.Director._id}`}>
-                        <Button variant="link">Director</Button>
-                    </Link>
-                    <Link to={`/genres/${movie.Genre.Name}`}>
-                        <Button variant="link">Genre</Button>
-                    </Link>
-                    <button className="favBtn isFav" onClick={(e) => removeFavHandler(e, movie._id)}></button>
-                </div>
-            </Card>
+            &lt;Card className="movie-card">
+                &lt;Card.Img variant="top" src={movie.ImagePath} />
+                &lt;Card.Body>
+                    &lt;Card.Title>{movie.Title}&lt;/Card.Title>
+                    &lt;Card.Text>{movie.Description}&lt;/Card.Text>
+                &lt;/Card.Body>
+                &lt;div className="card-links">
+                    &lt;Link to={`/movies/${movie._id}`}>
+                        &lt;Button variant="link">Open&lt;/Button>
+                    &lt;/Link>
+                    &lt;Link to={`/directors/${movie.Director._id}`}>
+                        &lt;Button variant="link">Director&lt;/Button>
+                    &lt;/Link>
+                    &lt;Link to={`/genres/${movie.Genre.Name}`}>
+                        &lt;Button variant="link">Genre&lt;/Button>
+                    &lt;/Link>
+                    &lt;button className="favBtn isFav" onClick={(e) => removeFavHandler(e, movie._id)}>&lt;/button>
+                &lt;/div>
+            &lt;/Card>
         )
     }
 
 
     return (
-        <Card className="movie-card">
-            <Card.Img variant="top" src={movie.ImagePath} />
-            <Card.Body>
-                <Card.Title>{movie.Title}</Card.Title>
-                <Card.Text>{movie.Description}</Card.Text>
-            </Card.Body>
-            <div className="card-links">
-                <Link to={`/movies/${movie._id}`}>
-                    <Button variant="link">Open</Button>
-                </Link>
-                <Link to={`/directors/${movie.Director._id}`}>
-                    <Button variant="link">Director</Button>
-                </Link>
-                <Link to={`/genres/${movie.Genre.Name}`}>
-                    <Button variant="link">Genre</Button>
-                </Link>
-                <button className="favBtn notFav" onClick={(e) => addFavHandler(e, movie._id)}></button>
-            </div>
-        </Card>
+        &lt;Card className="movie-card">
+            &lt;Card.Img variant="top" src={movie.ImagePath} />
+            &lt;Card.Body>
+                &lt;Card.Title>{movie.Title}&lt;/Card.Title>
+                &lt;Card.Text>{movie.Description}&lt;/Card.Text>
+            &lt;/Card.Body>
+            &lt;div className="card-links">
+                &lt;Link to={`/movies/${movie._id}`}>
+                    &lt;Button variant="link">Open&lt;/Button>
+                &lt;/Link>
+                &lt;Link to={`/directors/${movie.Director._id}`}>
+                    &lt;Button variant="link">Director&lt;/Button>
+                &lt;/Link>
+                &lt;Link to={`/genres/${movie.Genre.Name}`}>
+                    &lt;Button variant="link">Genre&lt;/Button>
+                &lt;/Link>
+                &lt;button className="favBtn notFav" onClick={(e) => addFavHandler(e, movie._id)}>&lt;/button>
+            &lt;/div>
+        &lt;/Card>
 
     );
 }
@@ -171,4 +199,26 @@ MovieCard.propTypes = {
     isFav: PropTypes.bool.isRequired,
     //profile: PropTypes.object
     // setProfile: PropTypes.func
-};
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addFavHandler">addFavHandler</a></li><li><a href="global.html#mapStateToProps">mapStateToProps</a></li><li><a href="global.html#removeFavHandler">removeFavHandler</a></li><li><a href="global.html#removeFromFavs">removeFromFavs</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Sun Aug 16 2020 22:53:40 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

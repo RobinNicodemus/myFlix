@@ -6,6 +6,14 @@ import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 import MoviesList from '../movies-list/movies-list';
 
+/**
+ * @requires react
+ * @requires PropTypes
+ * @requires react-bootstrap
+ * @requires react-router-dom
+ * @requires MoviesList
+ */
+
 import './genre-view.scss';
 
 export function GenreView(props) {

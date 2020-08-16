@@ -8,6 +8,16 @@ import MoviesList from '../movies-list/movies-list';
 
 import './director-view.scss';
 
+
+/**
+ * @requires react
+ * @requires PropTypes
+ * @requires react-bootstrap
+ * @requires react-router-dom
+ * @requires MoviesList
+ */
+
+
 export class DirectorView extends React.Component {
     constructor() {
         super();

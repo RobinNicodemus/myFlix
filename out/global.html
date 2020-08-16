@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="DELETE_favouriteMovie_byID"><span class="type-signature"></span>DELETE_favouriteMovie_byID<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>DELETE "/users/:username/favlist/:MovieID" </p><p>Delete Movie from Users Favourites</p><p>Response: {Object} user + Statuscode: 201 - succcess code / 500 or 422 failure code</p><p>Auth: This route requires valid jwt</p>Response example: {string}
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line291">line 291</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="DELETE_User"><span class="type-signature"></span>DELETE_User<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>DELETE "/users/:username" </p><p>Delete existing user profile</p><p>Response: {Object} user + Statuscode: 201 - succcess code / 500 or 422 failure code</p><p>Auth: This route requires valid jwt</p>Response example: {string}
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line314">line 314</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="GET_Director_byName"><span class="type-signature"></span>GET_Director_byName<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>GET "/directors/:directorname" </p><p>returns data about a single director</p><p>Response: {Object} director + Statuscode: 201 - succcess code / 500 failure code</p><p>Auth: This route requires valid jwt</p>Response example: { "Movies": ["ObjectID", "ObjectID"], "_id": "5dcef9b16ac458b6033b2316", "Name": "Jonathan Demme", "Bio": "Robert Jonathan Demme was an American director, producer and screenwriter.", "Birth": "1944-02-22T00:00:00.000Z", "Death": "2017-04-26T00:00:00.000Z" }
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line116">line 116</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="GET_Genre_byName"><span class="type-signature"></span>GET_Genre_byName<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>GET "/genres/:Genrename" </p><p>returns data about a single genre</p><p>Response: {Object} genre + Statuscode: 201 - succcess code / 500 failure code</p><p>Auth: This route requires valid jwt</p>Response example: { Name: "Thriller", Description: "Thrillers are movies that focus on ..." }
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line96">line 96</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="GET_Movie_byID"><span class="type-signature"></span>GET_Movie_byID<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>GET "/movies/:MovieID" </p><p>returns data about a single movie</p><p>Response: {Object} movie + Statuscode: 201 - succcess code / 500 failure code</p><p>Auth: This route requires valid jwt</p>Response Example: { _id: "MovieID1" Title: "Movie1", Description: "lorem ipsum", Genre: "ObjectID", Director: "ObjectID", ImagePath: "movie1.png", Featured: Boolean }
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line74">line 74</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="GET_Movies"><span class="type-signature"></span>GET_Movies<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>GET "/movies" </p><p>returns a list of all movies</p><p>Response: {Array<movie>} movies + Statuscode: 201 - succcess code / 500 failure code</p><p>Auth: This route requires valid jwt</p>Response Example: [{ Actors: ["Act1","Act2"], _id: "MovieID1" Title: "Movie1", Description: "lorem ipsum", Genre: "ObjectID", Director: "ObjectID", ImagePath: "movie1.png", Featured: Boolean }, { Actors: [...], _id: "MovieID2", Title: "Movie2", Description: "lorem ipsum", ... }, ... ]
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line52">line 52</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="Hello_World"><span class="type-signature"></span>Hello_World<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>GET: "/" </p> <p>just gives a welcome message</p><p>Response: {string} Welcome to MyFlix!</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line44">line 44</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="PATCH_change_userProfile"><span class="type-signature"></span>PATCH_change_userProfile<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>PATCH "/users/:username" </p><p>Change existing user profile</p><p>Response: {Object} user + Statuscode: 201 - succcess code / 500 or 422 failure code</p><p>Auth: This route requires valid jwt</p><p>Request example: { Username: String, (required) Password: String, (required) Email: String, (required) Birthday: Date }</pResponse example: { _id: "exampleID", Username: "newUser", Password: "complex", Email: "newUser@example.com", }
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line223">line 223</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="POST_create_User"><span class="type-signature"></span>POST_create_User<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>GET "/users/:UserID" </p><p>Create a new user profile</p><p>Response: {Object} user + Statuscode: 201 - succcess code / 500 or 422 failure code</p><p>Auth: This route is requires valid jwt</p>Response example: { _id: "ID", FavList: [MovieID , MovieID2], Username: "User", Password: "hashedpw", Email: "E@mail.com"
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line150">line 150</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="POST_create_User"><span class="type-signature"></span>POST_create_User<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Post "/users" </p><p>Create a new user profile</p><p>Response: {Object} user + Statuscode: 201 - succcess code / 500 or 422 failure code</p><p>Auth: This route is open</p><p>Request example: { Username: String, (required) Password: String, (required) Email: String, (required) Birthday: Date }</p<p>username must be alphanumberic, password at least 6 chars, email must be valid</p>Response example: { _id: "exampleID", Username: "newUser", Password: "complex", Email: "newUser@example.com", }
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line173">line 173</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="POST_favouriteMovie_byID"><span class="type-signature"></span>POST_favouriteMovie_byID<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>POST "/users/:username/favlist/:NewMovieID" </p><p>Add Movie to Users Favourites</p><p>Response: {Object} user + Statuscode: 201 - succcess code / 500 or 422 failure code</p><p>Auth: This route requires valid jwt</p>Response example: { FavList: [NewMovieID , MovieID2] Username: "User", Password: "complex", Email: "changed@changed.com" }
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="index.js.html">index.js</a>, <a href="index.js.html#line268">line 268</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#DELETE_favouriteMovie_byID">DELETE_favouriteMovie_byID</a></li><li><a href="global.html#DELETE_User">DELETE_User</a></li><li><a href="global.html#GET_Director_byName">GET_Director_byName</a></li><li><a href="global.html#GET_Genre_byName">GET_Genre_byName</a></li><li><a href="global.html#GET_Movie_byID">GET_Movie_byID</a></li><li><a href="global.html#GET_Movies">GET_Movies</a></li><li><a href="global.html#Hello_World">Hello_World</a></li><li><a href="global.html#PATCH_change_userProfile">PATCH_change_userProfile</a></li><li><a href="global.html#POST_create_User">POST_create_User</a></li><li><a href="global.html#POST_favouriteMovie_byID">POST_favouriteMovie_byID</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Sun Aug 16 2020 22:54:36 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

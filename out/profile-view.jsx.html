@@ -1,4 +1,32 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: profile-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: profile-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
@@ -109,54 +137,54 @@ export class ProfileView extends React.Component {
     let profileFavMovies = movies.filter(m => favMovies.includes(m._id))
 
     return (
-      <div className="profile-view">
-        <Row className="justify-content-around">
-          <Card className="profile-card">
-            <div className="profile-head">
-              <div className="profile-data">
-                <span className="label">Username: </span>
-                <span className="value">{userData.Username}</span>
-              </div>
-              <div className="profile-data">
-                <span className="label">Email: </span>
-                <span className="value">{userData.Email}</span>
-              </div>
+      &lt;div className="profile-view">
+        &lt;Row className="justify-content-around">
+          &lt;Card className="profile-card">
+            &lt;div className="profile-head">
+              &lt;div className="profile-data">
+                &lt;span className="label">Username: &lt;/span>
+                &lt;span className="value">{userData.Username}&lt;/span>
+              &lt;/div>
+              &lt;div className="profile-data">
+                &lt;span className="label">Email: &lt;/span>
+                &lt;span className="value">{userData.Email}&lt;/span>
+              &lt;/div>
 
-              <div className="profile-data">
-                <span className="label">Birthday: </span>
-                <span className="value">{this.handleDate(userData.Birthday)}</span>
-              </div>
-            </div>
-            <Card.Body className="profile-body">
-              <div className="profile-card-btns">
-                <Button className="profile-btn"
+              &lt;div className="profile-data">
+                &lt;span className="label">Birthday: &lt;/span>
+                &lt;span className="value">{this.handleDate(userData.Birthday)}&lt;/span>
+              &lt;/div>
+            &lt;/div>
+            &lt;Card.Body className="profile-body">
+              &lt;div className="profile-card-btns">
+                &lt;Button className="profile-btn"
                   size="sm"
                   aria-controls="changeform-collapse"
                   aria-expanded={open}
                   onClick={() => this.setState({ open: !open })}
-                >Update</Button>
-                <Link className="profile-link" to={'/'}>
-                  <Button className="mv-btn" size="sm" variant="primary">All Movies</Button>
-                </Link>
-                <Button className="profile-btn"
+                >Update&lt;/Button>
+                &lt;Link className="profile-link" to={'/'}>
+                  &lt;Button className="mv-btn" size="sm" variant="primary">All Movies&lt;/Button>
+                &lt;/Link>
+                &lt;Button className="profile-btn"
                   size="sm"
                   onClick={(e) => this.deleteHandler(e)}
-                >Deregister</Button>
-              </div>
-              <Collapse in={open}>
-                <div id="changeform-collapse">
-                  <UpdateView userData={userData} />
-                </div>
-              </Collapse>
-            </Card.Body>
-          </Card>
-        </Row >
+                >Deregister&lt;/Button>
+              &lt;/div>
+              &lt;Collapse in={open}>
+                &lt;div id="changeform-collapse">
+                  &lt;UpdateView userData={userData} />
+                &lt;/div>
+              &lt;/Collapse>
+            &lt;/Card.Body>
+          &lt;/Card>
+        &lt;/Row >
 
-        <MoviesList movies={profileFavMovies} />s
+        &lt;MoviesList movies={profileFavMovies} />s
 
 
 
-      </div >
+      &lt;/div >
 
     )
 
@@ -179,4 +207,26 @@ ProfileView.propTypes = {
   setProfile: PropTypes.func.isRequired,
   setUser: PropTypes.func.isRequired,
   resetUser: PropTypes.func.isRequired
-};
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ProfileView.html">ProfileView</a></li></ul><h3>Global</h3><ul><li><a href="global.html#deleteUser">deleteUser</a></li><li><a href="global.html#getUser">getUser</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Sun Aug 16 2020 22:52:25 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

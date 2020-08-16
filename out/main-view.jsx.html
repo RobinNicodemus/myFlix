@@ -1,4 +1,32 @@
-import React from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: main-view.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: main-view.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
 import axios from 'axios';
 
 import { connect } from 'react-redux';
@@ -103,54 +131,54 @@ class MainView extends React.Component {
     let { profile } = this.props;
 
     if (!movies || !movies.length || !profile) return (
-      <Router basename="/client">
-        <div className="main-wrap">
-          <NavbarComponent onLoggedIn={this.onLoggedIn} resetUser={this.resetUser} user={user} />
-          <Route exact path="/" render={() => {
-            if (!user) return <RegistrationView onLoggedIn={this.onLoggedIn} />
-            return <MoviesList movies={movies} profile={profile} />;
+      &lt;Router basename="/client">
+        &lt;div className="main-wrap">
+          &lt;NavbarComponent onLoggedIn={this.onLoggedIn} resetUser={this.resetUser} user={user} />
+          &lt;Route exact path="/" render={() => {
+            if (!user) return &lt;RegistrationView onLoggedIn={this.onLoggedIn} />
+            return &lt;MoviesList movies={movies} profile={profile} />;
           }} />
-        </div>
-      </Router>
+        &lt;/div>
+      &lt;/Router>
     );
 
     return (
 
-      <Router basename="/client">
-        <div className="main-wrap">
-          <NavbarComponent onLoggedIn={this.onLoggedIn} resetUser={this.resetUser} user={user} />
-          <Row className="main-view">
-            <Col lg={{ span: 8, offset: 2 }}>
-              <Route exact path="/" render={() => {
-                if (!user) return <RegistrationView onLoggedIn={this.onLoggedIn} />
-                return <MoviesList movies={movies} profile={profile} />;
+      &lt;Router basename="/client">
+        &lt;div className="main-wrap">
+          &lt;NavbarComponent onLoggedIn={this.onLoggedIn} resetUser={this.resetUser} user={user} />
+          &lt;Row className="main-view">
+            &lt;Col lg={{ span: 8, offset: 2 }}>
+              &lt;Route exact path="/" render={() => {
+                if (!user) return &lt;RegistrationView onLoggedIn={this.onLoggedIn} />
+                return &lt;MoviesList movies={movies} profile={profile} />;
               }} />
-              <Route path="/register" render={() => <RegistrationView />} />
-              <Route path="/movies/:movieId" render={({ match }) => <MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
-              <Route
+              &lt;Route path="/register" render={() => &lt;RegistrationView />} />
+              &lt;Route path="/movies/:movieId" render={({ match }) => &lt;MovieView movie={movies.find(m => m._id === match.params.movieId)} />} />
+              &lt;Route
                 path="/genres/:name"
                 render={({ match }) => (
-                  <GenreView
+                  &lt;GenreView
                     genre={movies.find(m => m.Genre.Name === match.params.name).Genre}
                     genreMovies={movies.filter(m => m.Genre.Name === match.params.name)}
                   />
                 )}
               />
-              <Route path="/directors/:directorId" render={({ match }) => {
-                return <DirectorView
+              &lt;Route path="/directors/:directorId" render={({ match }) => {
+                return &lt;DirectorView
                   director={movies.find(m => m.Director._id === match.params.directorId).Director}
                   directorMovies={movies.filter(m => m.Director._id === match.params.directorId)}
                 />;
               }} />
-              <Route path="/users/:username" render={() => {
-                return <ProfileView user={user}
+              &lt;Route path="/users/:username" render={() => {
+                return &lt;ProfileView user={user}
                   resetUser={this.resetUser}
                   movies={movies} />
               }} />
-            </Col>
-          </Row>
-        </div>
-      </Router>
+            &lt;/Col>
+          &lt;/Row>
+        &lt;/div>
+      &lt;/Router>
     );
 
     // 
@@ -167,4 +195,26 @@ let mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps, { setMovies, setUser, setProfile })(MainView);
+export default connect(mapStateToProps, { setMovies, setUser, setProfile })(MainView);</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#getMovies">getMovies</a></li><li><a href="global.html#getUser">getUser</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.5</a> on Sun Aug 16 2020 22:53:18 GMT+0200 (Central European Summer Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

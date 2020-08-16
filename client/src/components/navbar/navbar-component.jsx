@@ -13,6 +13,17 @@ import { Link } from 'react-router-dom';
 
 import './navbar-component.scss';
 
+
+/**
+ * @requires react
+ * @requires react-redux
+ * @requires PropTypes
+ * @requires react-bootstrap
+ * @requires react-router-dom
+ * @requires LoginView
+ * @requires VisibilityFilterInput
+ */
+
 const mapStateToProps = state => {
   const { visibilityFilter } = state;
   return { visibilityFilter };

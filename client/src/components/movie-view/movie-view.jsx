@@ -6,6 +6,15 @@ import { Link } from 'react-router-dom';
 
 import './movie-view.scss'
 
+
+/**
+ * @requires react
+ * @requires react-redux
+ * @requires PropTypes
+ * @requires react-bootstrap
+ * @requires react-router-dom
+ */
+
 export function MovieView(props) {
 
   const { movie } = props;

@@ -6,6 +6,15 @@ import { MovieCard } from '../movie-card/movie-card';
 
 import './movies-list.scss'
 
+
+/**
+ * @requires react
+ * @requires react-redux
+ * @requires PropTypes
+ * @requires react-bootstrap
+ * @requires MovieCard
+ */
+
 export function MoviesList(props) {
     const { movies, visibilityFilter, profile } = props;
     let filteredMovies = movies;
